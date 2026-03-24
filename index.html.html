@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yasaswini Chowdary | Cybersecurity Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #06090e;
+  --surface: #0c1118;
+  --surface2: #111827;
+  --cyan: #00d4ff;
+  --cyan2: rgba(0,212,255,0.08);
+  --blue: #3b82f6;
+  --green: #10b981;
+  --amber: #f59e0b;
+  --red: #ef4444;
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(0,212,255,0.2);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;overflow-x:hidden;}
+
+/* GRID BG */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 80px;background:rgba(6,9,14,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.logo{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:16px;letter-spacing:2px;text-decoration:none;}
+.nav-links{display:flex;gap:32px;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--cyan);}
+.nav-cta{padding:9px 22px;background:var(--cyan);color:var(--bg);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s;}
+.nav-cta:hover{opacity:0.85;}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:120px 80px 80px;gap:60px;position:relative;z-index:1;}
+.hero-label{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:up 0.6s 0.2s forwards;}
+.hero-name{font-size:clamp(38px,5vw,64px);font-weight:800;line-height:1.05;color:#fff;margin-bottom:12px;opacity:0;animation:up 0.6s 0.4s forwards;}
+.hero-name em{color:var(--cyan);font-style:normal;}
+.hero-role{font-family:'JetBrains Mono',monospace;font-size:17px;color:var(--blue);margin-bottom:20px;min-height:26px;opacity:0;animation:up 0.6s 0.6s forwards;}
+.cursor{display:inline-block;width:2px;height:16px;background:var(--cyan);margin-left:1px;vertical-align:middle;animation:blink 1s infinite;}
+.hero-bio{font-size:15px;line-height:1.8;color:var(--muted);max-width:500px;margin-bottom:32px;opacity:0;animation:up 0.6s 0.8s forwards;}
+.hero-chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;opacity:0;animation:up 0.6s 0.9s forwards;}
+.chip{font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 12px;border:1px solid var(--border2);color:var(--cyan);background:var(--cyan2);letter-spacing:0.5px;}
+.hero-btns{display:flex;gap:14px;opacity:0;animation:up 0.6s 1s forwards;}
+.btn-p{padding:13px 30px;background:var(--cyan);color:var(--bg);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s;}
+.btn-p:hover{opacity:0.85;}
+.btn-s{padding:13px 30px;border:1px solid var(--border2);color:var(--cyan);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background 0.2s;}
+.btn-s:hover{background:var(--cyan2);}
+
+/* TERMINAL */
+.terminal{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:0 0 60px rgba(0,212,255,0.08),0 40px 80px rgba(0,0,0,0.5);opacity:0;animation:fadein 1s 1.2s forwards;}
+.term-bar{background:var(--surface2);padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.dot{width:11px;height:11px;border-radius:50%;}
+.dot.r{background:#ff5f57;}.dot.y{background:#febc2e;}.dot.g{background:#28c840;}
+.term-file{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-left:8px;}
+.term-body{padding:20px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:2.1;}
+.tp{color:#7c8cf8;}.tc{color:var(--cyan);}.to{color:var(--green);}.tw{color:var(--amber);}.tm{color:var(--muted);}
+
+/* STATS */
+.stats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface);}
+.stat{padding:30px 20px;text-align:center;border-right:1px solid var(--border);transition:background 0.2s;}
+.stat:last-child{border-right:none;}
+.stat:hover{background:var(--cyan2);}
+.stat-n{font-size:32px;font-weight:800;color:var(--cyan);display:block;line-height:1;margin-bottom:6px;}
+.stat-l{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+
+/* SECTIONS */
+.sec{position:relative;z-index:1;padding:90px 80px;max-width:1280px;margin:0 auto;}
+.sec-tag{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
+.sec-tag::before{content:'// ';}
+.sec-title{font-size:clamp(26px,3.5vw,40px);font-weight:800;color:#fff;margin-bottom:50px;line-height:1.1;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.skill-card{background:var(--surface);border:1px solid var(--border);padding:26px;transition:all 0.3s;position:relative;overflow:hidden;}
+.skill-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--cyan),transparent);transform:scaleX(0);transition:transform 0.3s;transform-origin:left;}
+.skill-card:hover{border-color:var(--border2);transform:translateY(-4px);}
+.skill-card:hover::after{transform:scaleX(1);}
+.sk-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.sk-icon{width:36px;height:36px;background:var(--cyan2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.sk-name{font-size:14px;font-weight:700;color:#fff;letter-spacing:0.3px;}
+.sk-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.stag{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 7px;background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--muted);}
+
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;}
+.proj-card{background:var(--surface);border:1px solid var(--border);padding:30px;transition:all 0.3s;}
+.proj-card:hover{border-color:var(--border2);transform:translateY(-4px);}
+.proj-tag{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 10px;border:1px solid;margin-bottom:16px;display:inline-block;}
+.proj-tag.soc{color:var(--cyan);border-color:rgba(0,212,255,0.3);}
+.proj-tag.pentest{color:var(--red);border-color:rgba(239,68,68,0.3);}
+.proj-tag.cloud{color:var(--blue);border-color:rgba(59,130,246,0.3);}
+.proj-tag.grc{color:var(--green);border-color:rgba(16,185,129,0.3);}
+.proj-tag.dev{color:var(--amber);border-color:rgba(245,158,11,0.3);}
+.proj-name{font-size:17px;font-weight:700;color:#fff;margin-bottom:10px;}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;}
+.proj-tools{display:flex;flex-wrap:wrap;gap:5px;}
+.ptool{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 7px;background:rgba(255,255,255,0.04);color:var(--muted);border:1px solid var(--border);}
+.proj-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:var(--cyan);font-size:12px;font-weight:600;text-decoration:none;letter-spacing:1px;text-transform:uppercase;}
+
+/* EXPERIENCE */
+.exp-list{display:flex;flex-direction:column;gap:24px;}
+.exp-card{background:var(--surface);border:1px solid var(--border);padding:34px;transition:all 0.3s;display:grid;grid-template-columns:1fr auto;gap:20px;align-start:start;}
+.exp-card:hover{border-color:var(--border2);}
+.exp-role{font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;}
+.exp-co{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:12px;margin-bottom:14px;letter-spacing:1px;}
+.exp-pts{list-style:none;}
+.exp-pts li{color:var(--muted);font-size:13.5px;line-height:1.7;padding-left:16px;position:relative;margin-bottom:5px;}
+.exp-pts li::before{content:'▸';position:absolute;left:0;color:var(--cyan);}
+.exp-date{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);white-space:nowrap;padding-top:4px;text-align:right;}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+.cert-card{background:var(--surface);border:1px solid var(--border);padding:24px;text-align:center;transition:all 0.3s;}
+.cert-card:hover{border-color:var(--border2);transform:translateY(-4px);}
+.cert-ico{font-size:28px;margin-bottom:12px;}
+.cert-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px;}
+.cert-body{font-size:12px;color:var(--muted);margin-bottom:10px;}
+.badge{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 10px;display:inline-block;margin-top:6px;}
+.badge.live{background:rgba(16,185,129,0.1);color:var(--green);border:1px solid rgba(16,185,129,0.3);}
+.badge.wip{background:rgba(245,158,11,0.1);color:var(--amber);border:1px solid rgba(245,158,11,0.3);}
+
+/* RECOMMENDATIONS */
+.recs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+.rec-card{background:var(--surface);border:1px solid var(--border);padding:30px;transition:border-color 0.3s;position:relative;}
+.rec-card:hover{border-color:var(--border2);}
+.rec-quote{font-size:36px;color:var(--cyan);opacity:0.3;line-height:1;margin-bottom:10px;}
+.rec-text{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:20px;font-style:italic;}
+.rec-person{display:flex;align-items:center;gap:12px;}
+.rec-avatar{width:42px;height:42px;border-radius:50%;background:var(--cyan2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--cyan);}
+.rec-name{font-size:14px;font-weight:700;color:#fff;}
+.rec-title{font-size:12px;color:var(--muted);}
+
+/* CONTACT */
+.contact-wrap{background:var(--surface);border:1px solid var(--border);padding:60px;text-align:center;position:relative;overflow:hidden;}
+.contact-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,212,255,0.06) 0%,transparent 60%);}
+.contact-title{font-size:36px;font-weight:800;color:#fff;margin-bottom:12px;position:relative;}
+.contact-sub{color:var(--muted);font-size:14px;margin-bottom:10px;position:relative;}
+.avail{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);margin-bottom:36px;position:relative;display:flex;align-items:center;justify-content:center;gap:8px;}
+.avail-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+.contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;position:relative;}
+.clink{display:flex;align-items:center;gap:8px;padding:12px 24px;border:1px solid var(--border);color:var(--text);text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;}
+.clink:hover{border-color:var(--border2);color:var(--cyan);}
+
+/* FOOTER */
+footer{position:relative;z-index:1;text-align:center;padding:28px;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);}
+
+/* ANIMATIONS */
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadein{from{opacity:0;}to{opacity:1;}}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:16px 24px;}
+  .nav-links,.nav-cta{display:none;}
+  .hero{grid-template-columns:1fr;padding:100px 24px 60px;}
+  .terminal{display:none;}
+  .stats{grid-template-columns:repeat(3,1fr);}
+  .sec{padding:60px 24px;}
+  .contact-wrap{padding:40px 24px;}
+  .exp-card{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">YC_SEC</a>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#certs">Certs</a>
+    <a href="#recs">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="mailto:yashchowdhary2002@gmail.com">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-label">Cybersecurity Professional — May 2026 Graduate</div>
+    <h1 class="hero-name">Yasaswini<br><em>Chowdary</em></h1>
+    <div class="hero-role" id="typed"></div>
+    <p class="hero-bio">Master's candidate in Cybersecurity at UAB with 2 years protecting Morgan Stanley's financial infrastructure. Specialized across SOC operations, penetration testing, GRC, and cloud security. CompTIA Security+ certified.</p>
+    <div class="hero-chips">
+      <span class="chip">SOC Analyst</span>
+      <span class="chip">Penetration Tester</span>
+      <span class="chip">GRC Analyst</span>
+      <span class="chip">Cloud Security</span>
+      <span class="chip">Security Engineer</span>
+    </div>
+    <div class="hero-btns">
+      <a href="mailto:yashchowdhary2002@gmail.com" class="btn-p">Get In Touch</a>
+      <a href="#projects" class="btn-s">View Projects</a>
+    </div>
+  </div>
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+      <span class="term-file">~/yasi/profile.sh</span>
+    </div>
+    <div class="term-body">
+      <div><span class="tp">yasi@uab</span>:<span class="tc">~$</span> <span class="tm">whoami</span></div>
+      <div class="to">Yasaswini Chowdary — Cybersecurity Professional</div>
+      <div><span class="tp">yasi@uab</span>:<span class="tc">~$</span> <span class="tm">cat availability.txt</span></div>
+      <div class="to">► Available: May 2026 · Full-time</div>
+      <div class="to">► Location: Birmingham, AL · Open to relocation</div>
+      <div><span class="tp">yasi@uab</span>:<span class="tc">~$</span> <span class="tm">ls certs/</span></div>
+      <div class="to">Security+ &nbsp;GoogleCyber &nbsp;CySA+(WIP)</div>
+      <div><span class="tp">yasi@uab</span>:<span class="tc">~$</span> <span class="tm">python3 scan.py --target skills</span></div>
+      <div class="tw">[+] SIEM: Splunk · Sentinel · QRadar</div>
+      <div class="tw">[+] Pentest: Burp Suite · Nmap · Kali · Wireshark</div>
+      <div class="tw">[+] Cloud: AWS · Azure · GCP</div>
+      <div class="tw">[+] Code: Python · Java · Bash · PowerShell</div>
+      <div class="tw">[+] GRC: NIST · ISO 27001 · PCI-DSS · SOC2</div>
+      <div class="to">[✓] All systems operational. Ready to deploy.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><span class="stat-n">2+</span><span class="stat-l">Years Exp</span></div>
+  <div class="stat"><span class="stat-n">50+</span><span class="stat-l">Projects</span></div>
+  <div class="stat"><span class="stat-n">3</span><span class="stat-l">Certs</span></div>
+
+  <div class="stat"><span class="stat-n">May '26</span><span class="stat-l">Available</span></div>
+</div>
+
+<!-- SKILLS -->
+<section class="sec" id="skills">
+  <div class="sec-tag">Expertise</div>
+  <h2 class="sec-title">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="sk-header"><div class="sk-icon">🛡️</div><div class="sk-name">Security Operations</div></div>
+      <div class="sk-tags"><span class="stag">Splunk</span><span class="stag">Sentinel</span><span class="stag">QRadar</span><span class="stag">CrowdStrike</span><span class="stag">SIEM</span><span class="stag">EDR</span><span class="stag">SOAR</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-header"><div class="sk-icon">🔍</div><div class="sk-name">Penetration Testing</div></div>
+      <div class="sk-tags"><span class="stag">Burp Suite</span><span class="stag">Nmap</span><span class="stag">Wireshark</span><span class="stag">Kali Linux</span><span class="stag">OWASP</span><span class="stag">Metasploit</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-header"><div class="sk-icon">☁️</div><div class="sk-name">Cloud Security</div></div>
+      <div class="sk-tags"><span class="stag">AWS</span><span class="stag">Azure</span><span class="stag">GCP</span><span class="stag">IAM</span><span class="stag">GuardDuty</span><span class="stag">CloudTrail</span><span class="stag">Zero Trust</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-header"><div class="sk-icon">📋</div><div class="sk-name">GRC & Compliance</div></div>
+      <div class="sk-tags"><span class="stag">NIST CSF</span><span class="stag">ISO 27001</span><span class="stag">PCI-DSS</span><span class="stag">SOC 2</span><span class="stag">HIPAA</span><span class="stag">CMMC</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-header"><div class="sk-icon">⚡</div><div class="sk-name">Security Automation</div></div>
+      <div class="sk-tags"><span class="stag">Python</span><span class="stag">PowerShell</span><span class="stag">Bash</span><span class="stag">Java</span><span class="stag">CI/CD</span><span class="stag">Docker</span><span class="stag">Git</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-header"><div class="sk-icon">🔐</div><div class="sk-name">Identity & Access</div></div>
+      <div class="sk-tags"><span class="stag">Active Directory</span><span class="stag">Azure AD</span><span class="stag">MFA</span><span class="stag">RBAC</span><span class="stag">PAM</span><span class="stag">SSO</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="sec" id="projects">
+  <div class="sec-tag">Portfolio</div>
+  <h2 class="sec-title">Featured Projects</h2>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <span class="proj-tag soc">SOC</span>
+      <div class="proj-name">SIEM Detection Engineering Lab</div>
+      <div class="proj-desc">Built custom Splunk detection rules and correlation searches mapped to MITRE ATT&CK — reducing false positives by 40% and improving mean time to detect for phishing, lateral movement, and credential theft scenarios.</div>
+      <div class="proj-tools"><span class="ptool">Splunk</span><span class="ptool">MITRE ATT&CK</span><span class="ptool">Python</span><span class="ptool">KQL</span></div>
+    </div>
+    <div class="proj-card">
+      <span class="proj-tag pentest">PENTEST</span>
+      <div class="proj-name">Web Application Security Assessment</div>
+      <div class="proj-desc">Conducted end-to-end penetration test on a financial API environment using OWASP Top 10 methodology — identifying authentication bypass, SQL injection, and IDOR vulnerabilities with documented remediation plans.</div>
+      <div class="proj-tools"><span class="ptool">Burp Suite</span><span class="ptool">Nmap</span><span class="ptool">OWASP</span><span class="ptool">Kali Linux</span></div>
+    </div>
+    <div class="proj-card">
+      <span class="proj-tag cloud">CLOUD</span>
+      <div class="proj-name">AWS IAM Security Hardening</div>
+      <div class="proj-desc">Audited AWS IAM configurations across a financial infrastructure — identifying over-permissive roles, implementing least-privilege policies, and automating credential rotation with Python scripts.</div>
+      <div class="proj-tools"><span class="ptool">AWS IAM</span><span class="ptool">Python</span><span class="ptool">CloudTrail</span><span class="ptool">CIS Benchmarks</span></div>
+    </div>
+    <div class="proj-card">
+      <span class="proj-tag grc">GRC</span>
+      <div class="proj-name">NIST CSF Compliance Framework</div>
+      <div class="proj-desc">Built a compliance tracking tool mapping security controls to NIST CSF 2.0 and NIST 800-53 — generating audit-ready evidence packages, gap analysis reports, and remediation roadmaps for security leadership.</div>
+      <div class="proj-tools"><span class="ptool">NIST CSF</span><span class="ptool">Python</span><span class="ptool">Excel</span><span class="ptool">Power BI</span></div>
+    </div>
+    <div class="proj-card">
+      <span class="proj-tag dev">DEVSECOPS</span>
+      <div class="proj-name">CI/CD Security Pipeline</div>
+      <div class="proj-desc">Designed a DevSecOps CI/CD pipeline with integrated SAST, DAST, and dependency scanning — enforcing security gates at every deployment stage and reducing security defects reaching production by 60%.</div>
+      <div class="proj-tools"><span class="ptool">Docker</span><span class="ptool">GitHub Actions</span><span class="ptool">SAST</span><span class="ptool">DAST</span></div>
+    </div>
+    <div class="proj-card">
+      <span class="proj-tag soc">INCIDENT RESPONSE</span>
+      <div class="proj-name">Phishing Investigation Automation</div>
+      <div class="proj-desc">Developed a Python tool automating phishing email triage — extracting headers, URLs, and IOCs, correlating against threat intelligence feeds, and generating structured incident reports for analyst review.</div>
+      <div class="proj-tools"><span class="ptool">Python</span><span class="ptool">VirusTotal API</span><span class="ptool">MISP</span><span class="ptool">Splunk</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="sec" id="experience">
+  <div class="sec-tag">Career</div>
+  <h2 class="sec-title">Work Experience</h2>
+  <div class="exp-list">
+    <div class="exp-card">
+      <div>
+        <div class="exp-role">Security & QA Engineer</div>
+        <div class="exp-co">CAPGEMINI · CLIENT: MORGAN STANLEY</div>
+        <ul class="exp-pts">
+          <li>Monitored enterprise SIEM platforms detecting threats across financial infrastructure serving millions of users</li>
+          <li>Conducted penetration testing using Burp Suite, Nmap, and Wireshark — identifying critical authentication bypasses</li>
+          <li>Developed Python/Java automation tools scaling vulnerability management across 200+ cloud assets</li>
+          <li>Performed cloud security assessments on AWS EC2, S3, and IAM — implementing least-privilege configurations</li>
+          <li>Supported NIST 800-53 and PCI-DSS compliance — gathering audit evidence and maintaining documentation</li>
+          <li>Integrated security checkpoints into CI/CD pipelines — reducing production security defects significantly</li>
+        </ul>
+      </div>
+      <div class="exp-date">Dec 2022<br>—<br>Aug 2024</div>
+    </div>
+    <div class="exp-card">
+      <div>
+        <div class="exp-role">Cybersecurity Intern</div>
+        <div class="exp-co">SEVEAL TECHNOLOGIES</div>
+        <ul class="exp-pts">
+          <li>Monitored network security alerts across Windows and Linux environments for threat detection</li>
+          <li>Performed vulnerability scanning and attack surface analysis using Nmap across operational systems</li>
+          <li>Configured access-control settings and cloud security hardening across managed environments</li>
+          <li>Developed Python scripts for log parsing and anomaly detection workflows</li>
+        </ul>
+      </div>
+      <div class="exp-date">May 2022<br>—<br>Nov 2022</div>
+    </div>
+    <div class="exp-card">
+      <div>
+        <div class="exp-role">M.S. Cybersecurity</div>
+        <div class="exp-co">UNIVERSITY OF ALABAMA AT BIRMINGHAM (UAB) · GPA 3.5+</div>
+        <ul class="exp-pts">
+          <li>Coursework: SOC Analysis, Network Security, Cloud Security, Digital Forensics, Penetration Testing, GRC</li>
+          <li>Research focus: OT/ICS Security, AI/ML Security Governance, Zero Trust Architecture</li>
+          <li>Expected graduation: May 2026</li>
+        </ul>
+      </div>
+      <div class="exp-date">Sep 2024<br>—<br>May 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section class="sec" id="certs">
+  <div class="sec-tag">Credentials</div>
+  <h2 class="sec-title">Certifications</h2>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-ico">🏆</div>
+      <div class="cert-name">CompTIA Security+</div>
+      <div class="cert-body">Vendor-neutral security fundamentals</div>
+      <span class="badge live">ACTIVE</span>
+    </div>
+    <div class="cert-card">
+      <div class="cert-ico">🔒</div>
+      <div class="cert-name">Google Cybersecurity</div>
+      <div class="cert-body">Professional Certificate</div>
+      <span class="badge live">ACTIVE</span>
+    </div>
+    <div class="cert-card">
+      <div class="cert-ico">⚙️</div>
+      <div class="cert-name">CompTIA CySA+</div>
+      <div class="cert-body">Cybersecurity Analyst</div>
+      <span class="badge wip">IN PROGRESS</span>
+    </div>
+    <div class="cert-card">
+      <div class="cert-ico">☁️</div>
+      <div class="cert-name">AWS Cloud Practitioner</div>
+      <div class="cert-body">Cloud Fundamentals</div>
+      <span class="badge wip">IN PROGRESS</span>
+    </div>
+    <div class="cert-card">
+      <div class="cert-ico">🌐</div>
+      <div class="cert-name">CompTIA Network+</div>
+      <div class="cert-body">Network Infrastructure</div>
+      <span class="badge wip">IN PROGRESS</span>
+    </div>
+    <div class="cert-card">
+      <div class="cert-ico">🎯</div>
+      <div class="cert-name">TryHackMe</div>
+      <div class="cert-body">SOC Analyst & Pentest Labs</div>
+      <span class="badge live">ACTIVE</span>
+    </div>
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section class="sec" id="recs">
+  <div class="sec-tag">Testimonials</div>
+  <h2 class="sec-title">What People Say</h2>
+  <div class="recs-grid">
+    <div class="rec-card">
+      <div class="rec-quote">"</div>
+      <div class="rec-text">Yasaswini consistently demonstrated exceptional analytical skills and a deep understanding of financial security systems. Her ability to identify vulnerabilities that eluded our standard tools — and build custom solutions to address them — was truly impressive. She brought both technical rigor and a collaborative spirit that made her an invaluable member of our security team at Morgan Stanley.</div>
+      <div class="rec-person">
+        <div class="rec-avatar">MS</div>
+        <div>
+          <div class="rec-name">Senior Security Engineer</div>
+          <div class="rec-title">Morgan Stanley · via Capgemini</div>
+        </div>
+      </div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-quote">"</div>
+      <div class="rec-text">As Director of the Data Security and Privacy Lab at UAB, I have had the opportunity to work with many talented cybersecurity students. Yasaswini stands out for her genuine passion for the field, her ability to connect theoretical knowledge to real-world applications, and her drive to continuously improve. She approaches complex security challenges with creativity and precision — qualities that will serve her exceptionally well in any professional role.</div>
+      <div class="rec-person">
+        <div class="rec-avatar">RH</div>
+        <div>
+          <div class="rec-name">Dr. Ragib Hasan</div>
+          <div class="rec-title">Director, Data Security & Privacy Lab · UAB</div>
+        </div>
+      </div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-quote">"</div>
+      <div class="rec-text">Yasaswini joined us as an intern and quickly became one of our most reliable team members. She took ownership of network monitoring tasks, developed automation scripts that genuinely improved our operations, and communicated her findings with a clarity and professionalism well beyond her experience level. We would not hesitate to recommend her to any organization looking for a dedicated, technically strong cybersecurity professional.</div>
+      <div class="rec-person">
+        <div class="rec-avatar">ST</div>
+        <div>
+          <div class="rec-name">CEO</div>
+          <div class="rec-title">Seveal Technologies</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contact" style="padding-top:0;">
+  <div class="contact-wrap">
+    <h2 class="contact-title">Let's Work Together</h2>
+    <p class="contact-sub">Master's in Cybersecurity · UAB · Graduating May 2026</p>
+    <div class="avail"><span class="avail-dot"></span> Available for full-time roles</div>
+    <div class="contact-links">
+      <a href="mailto:yashchowdhary2002@gmail.com" class="clink">📧 Email Me</a>
+      <a href="tel:2052073732" class="clink">📱 205-207-3732</a>
+      <a href="https://www.linkedin.com/in/yash-chowdhary-0470481b3" class="clink" target="_blank">💼 LinkedIn</a>
+      <a href="https://github.com/yashchowdhary" class="clink" target="_blank">💻 GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span style="color:var(--cyan)">Yasaswini Chowdary</span> · Cybersecurity Professional · Birmingham, AL · Built with passion ⚡
+</footer>
+
+<script>
+const titles=['Security Operations Engineer','SOC Analyst','Penetration Tester','GRC Analyst','Cloud Security Engineer'];
+let ti=0,ci=0,del=false;
+const el=document.getElementById('typed');
+function type(){
+  const t=titles[ti];
+  if(del){el.innerHTML=t.substring(0,ci-1)+'<span class="cursor"></span>';ci--;}
+  else{el.innerHTML=t.substring(0,ci+1)+'<span class="cursor"></span>';ci++;}
+  if(!del&&ci===t.length)setTimeout(()=>del=true,2200);
+  else if(del&&ci===0){del=false;ti=(ti+1)%titles.length;}
+  setTimeout(type,del?45:75);
+}
+setTimeout(type,1400);
+
+const obs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
+},{threshold:0.1});
+document.querySelectorAll('.ski
